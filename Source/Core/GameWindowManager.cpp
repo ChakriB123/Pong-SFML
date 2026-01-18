@@ -10,11 +10,10 @@ namespace Core
     }
     void GameWindowManager::createGameWindow() {
         // Create the window with specified dimensions and title
-        game_window->create(
-            VideoMode(game_window_width, game_window_height),
-            game_title
-        );
+       // game_window->create(VideoMode(game_window_width, game_window_height),game_title);
+        game_window->create(sf::VideoMode::getDesktopMode(), game_title, sf::Style::Fullscreen);
     }
+
     bool GameWindowManager::isGameRunning() {
         // Return true if window is open, false if closed
         return game_window->isOpen();
@@ -25,7 +24,13 @@ namespace Core
     }
 
     void GameWindowManager::render() {
-        // This will handle all the drawing operations
-        //It'll be used in future lessons
+        
+        // Clear window with orange color (R:200, G:50, B:50, A:255)
+        game_window->clear(sf::Color(255, 165, 0, 255));
+
+        //draw shapes, sprites, etc 
+
+    // Display the changes
+        game_window->display();
     }
 }
