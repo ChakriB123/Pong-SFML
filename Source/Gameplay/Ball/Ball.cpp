@@ -24,4 +24,12 @@ namespace Gameplay
             throw std::runtime_error("Failed to load ball texture!");
         }
     }
+    void Ball::move()
+    {
+        pong_ball_sprite.move(velocity);
+    }
+    void Ball::update()
+    {
+        move();
+    }
 }

@@ -18,6 +18,19 @@ namespace Gameplay {
 		player1->render(game_window);
 		player2->render(game_window);
 	}
+	GameplayManager::GameplayManager(EventManager* manager)
+	{
+		initialize();
+		event_manager = manager;
+	}
+	void GameplayManager::update()
+	{
+		ball->update();
+		player1->update(event_manager->isKeyPressed(Keyboard::W),
+			event_manager->isKeyPressed(Keyboard::S));
+		player2->update(event_manager->isKeyPressed(Keyboard::Up),
+			event_manager->isKeyPressed(Keyboard::Down));
+	}
 
 
 }

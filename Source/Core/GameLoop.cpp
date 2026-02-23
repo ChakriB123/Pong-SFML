@@ -7,6 +7,8 @@ namespace Core
         event_manager = new EventManager();
         gameplay_manager = new GameplayManager();
         game_window_manager->initialize();
+        gameplay_manager = new GameplayManager(event_manager);
+
     }
     bool GameLoop::isGameRunning() {
         return game_window_manager->isGameRunning();
@@ -15,14 +17,12 @@ namespace Core
         event_manager->pollEvents(game_window_manager->getGameWindow());
     }
     void GameLoop::update() {
-
+        gameplay_manager->update();
     }
     void GameLoop::render() {
 
         game_window_manager->clearGameWindow();
-        game_window_manager->displayGameWindow();
         gameplay_manager->render(game_window_manager->getGameWindow());
-
         game_window_manager->displayGameWindow();
     }
 }

@@ -1,6 +1,9 @@
 #pragma once
 #include "Paddle/Paddle.h"
 #include "Ball/Ball.h"
+#include "../Event/EventManager.h"
+
+using namespace Events;
 
 namespace Gameplay
 {
@@ -17,9 +20,11 @@ namespace Gameplay
 
 		float player2_postion_x = 1210.0f;
 		float player2_postion_y = 300.0f;
+		EventManager* event_manager;
 
 	public:
 		GameplayManager();
+		GameplayManager(EventManager* manager);
 		void update();
 		void render(RenderWindow* game_window);
 	};
