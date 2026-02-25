@@ -51,5 +51,4 @@ namespace Gameplay {
 		game_window->draw(bottomBoundary);
 		game_window->draw(rightBoundary);
 	}
-
 }
