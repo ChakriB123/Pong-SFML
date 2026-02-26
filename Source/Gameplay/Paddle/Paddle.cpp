@@ -22,6 +22,10 @@ namespace Gameplay {
             paddle_sprite.move(0, paddleSpeed * time_service->getDeltaTime() * speedMultiplier);
         }
     }
+    void Paddle::reset(float position_x, float position_y)
+    {
+        paddle_sprite.setPosition(position_x, position_y);
+    }
     void Paddle::update(bool move_up_key_pressed, bool move_down_key_pressed, TimeService* time_service)
     {
         movePaddle(move_up_key_pressed, move_down_key_pressed, time_service);
