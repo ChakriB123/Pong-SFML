@@ -3,8 +3,10 @@
 #include "Ball/Ball.h"
 #include "../Event/EventManager.h"
 #include "../Gameplay/Boundary/Boundary.h"
+#include "../Utility/TimeService.h"
 
 using namespace Events;
+using namespace Utility;
 
 namespace Gameplay
 {
@@ -16,6 +18,7 @@ namespace Gameplay
 		Paddle* player1;
 		Paddle* player2;
 		Boundary* boundary;
+		TimeService* time_service;
 
 		float player1_position_x = 40.0f;
 		float player1_position_y = 300.0f;

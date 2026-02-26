@@ -24,13 +24,14 @@ namespace Gameplay
             throw std::runtime_error("Failed to load ball texture!");
         }
     }
-    void Ball::move()
+    void Ball::move(TimeService* time_service)
     {
-        pong_ball_sprite.move(velocity);
+        updateDelayTime(time_service->getDeltaTime());
+        pong_ball_sprite.move(velocity * time_service->getDeltaTime() * speed_multiplier);
     }
-    void Ball::update(Paddle* player1, Paddle* player2)
+    void Ball::update(Paddle* player1, Paddle* player2, TimeService* time_service)
     {
-        move();
+        move(time_service);
         onCollision(player1, player2);
     }
 
@@ -87,4 +88,20 @@ namespace Gameplay
         pong_ball_sprite.setPosition(center_position_x, center_position_y);
         velocity = Vector2f(ball_speed, ball_speed);
     }
+    void Ball::updateDelayTime(float deltaTime)
+    {
+        if (current_state == BallState::Idle)
+        {
+            elapsed_delay_time += deltaTime;
+            if (elapsed_delay_time >= delay_duration)
+            {
+                current_state = BallState::Moving;
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
+
 }
