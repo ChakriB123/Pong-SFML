@@ -30,5 +30,9 @@ namespace UI {
 		void createLeftScoreText();
 		void createRightScoreText();
 		void render(RenderWindow* game_window);
+		string formatScore(int score);
+		void incrementPlayer1Score();
+		void incrementPlayer2Score();
+		void update();
 	};
 }
